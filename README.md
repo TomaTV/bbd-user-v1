@@ -17,7 +17,7 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur v
     ou Clonez le référentiel à l'aide de Git en ouvrant une fenêtre de terminal et en exécutant la commande suivante :
 
     ```bash
-    git clone https://github.com/TomaTV/votre-projet.git
+    git clone https://github.com/TomaTV/bdd-user-v1.git
     ```
 
 
@@ -55,4 +55,4 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur v
    - Ouvrez votre navigateur et accédez à [http://localhost:3000](http://localhost:3000) pour voir votre application.
 
 ## Auteurs
-[TOMA]: https://github.com/TomaTV
+[TOMA](https://github.com/TomaTV)
