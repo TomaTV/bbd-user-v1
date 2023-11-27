@@ -34,14 +34,6 @@ CREATE TABLE `projet` (
   `image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Déchargement des données de la table `projet`
---
-
-INSERT INTO `projet` (`id`, `title`, `description`, `image`) VALUES
-(4, 'TAXI2', 'QZDQZDZQDZQD', 'https://images.unsplash.com/photo-1685097879207-1a897190300f?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'),
-(5, 'taxi6', 'la nouvelle description', 'https://images.unsplash.com/photo-1613638377394-281765460baa?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-
 -- --------------------------------------------------------
 
 --
@@ -55,21 +47,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Déchargement des données de la table `users`
---
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
-(5, 'toma', 'toma@toma', '$2a$10$bcgu57.C7KATRiCWb.kTduQ9dp7PPqUOlsZ7yY.yCh3Xn8ayFUjgS'),
-(7, 'toma2', 'toma@toma2', '$2a$10$bcgu57.C7KATRiCWb.kTduQ9dp7PPqUOlsZ7yY.yCh3Xn8ayFUjgS'),
-(8, 'toma23', 'toma@toma23', '$2a$10$bcgu57.C7KATRiCWb.kTduQ9dp7PPqUOlsZ7yY.yCh3Xn8ayFUjgS'),
-(9, 'exemple', 'exemple@exemple.fr', '$2a$10$LgqE0vOiGfqjv0FybfeyBuzRvFkE5TYDPdeImN/BgGu/GO6vetiI2');
-
---
--- Index pour les tables déchargées
---
-
---
 -- Index pour la table `projet`
 --
 ALTER TABLE `projet`
