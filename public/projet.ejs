@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/public/img/ico.ico" type="image/x-icon">
+    <title><%= project.title %> - Mon Site Web</title>
+    <link rel="stylesheet" type="text/css" href="/public/login.css">
+</head>
+<body>
+    <header>
+        <div class="top-right-content">
+            <div id="account-info" class="account-info">
+                <!-- Contenu dynamique pour le compte -->
+                <span id="account-text">Compte</span>
+                <span id="dropdown-icon">&#9650;</span>
+                <ul id="account-menu" style="display: none;">
+                    <!-- Contenu du menu déroulant pour un utilisateur non connecté -->
+                    <li><a href="/home">Accueil</a></li>
+                    <li><a href="/register">Inscription</a></li>
+                    <li><a href="/login">Connexion</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <section class="project-details">
+        <div class="project-container">
+            <h1><%= project.title %></h1>
+            <p><%= project.description %></p>
+            <img src="<%= project.image %>" alt="<%= project.title %>">
+        </div>
+    </section>
+
+    <script type="text/javascript" src="/public/js/password.js"></script>
+</body>
+</html>

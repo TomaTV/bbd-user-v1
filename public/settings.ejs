@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/public/img/ico.ico" type="image/x-icon">
+    <% if (requireAuthentication) { %>
+        <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, proxy-revalidate">
+    <% } %>
+    <title>Paramètres</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <header>
+        <div class="top-right-content">
+            <div id="account-info" class="account-info">
+                <span id="account-text">Compte</span>
+                <span id="dropdown-icon">&#9650;</span>
+                <ul id="account-menu" style="display: none;"></ul>
+            </div>
+        </div>
+    </header>
+
+    <section class="admin-content">
+        <h2>Paramètres du compte</h2>
+
+        <!-- Formulaire de modification du nom d'utilisateur -->
+        <form id="usernameForm" action="/updateUsername" method="post">
+            <label for="newUsername">Nouveau nom d'utilisateur :</label>
+            <input type="text" id="newUsername" name="newUsername" required>
+
+            <button type="submit">Modifier le nom d'utilisateur</button>
+        </form>
+
+        <!-- Formulaire de modification du mot de passe -->
+        <form id="passwordForm" action="/updatePassword" method="post">
+            <label for="currentPassword">Mot de passe actuel :</label>
+            <input type="password" id="currentPassword" name="currentPassword" required>
+
+            <label for="newPassword">Nouveau mot de passe :</label>
+            <input type="password" id="newPassword" name="newPassword" required>
+
+            <label for="confirmNewPassword">Confirmez le nouveau mot de passe :</label>
+            <input type="password" id="confirmNewPassword" name="confirmNewPassword" required>
+
+            <button type="submit">Modifier le mot de passe</button>
+        </form>
+    </section>
+
+    <script type="text/javascript" src="/public/js/password.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const accountInfo = document.getElementById('account-info');
+        const accountMenu = document.getElementById('account-menu');
+        const isAuthenticated = true;
+
+        if (isAuthenticated) {
+            // Utilisateur connecté
+            // Affiche le menu déroulant
+            accountMenu.style.display = 'none';
+
+            // Ajoutez le contenu du menu déroulant pour un utilisateur connecté
+            const menuItems = [
+                { label: 'Accueil', link: '/back' },
+                { label: 'Paramètres', link: '/settings' },
+                { label: 'Déconnexion', link: '/logout' }
+            ];
+
+            menuItems.forEach(item => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = item.link; // Utilisez le lien spécifié dans l'objet menuItems
+                a.textContent = item.label;
+                li.appendChild(a);
+                accountMenu.appendChild(li);
+            });
+
+            // Cache les éléments Connexion et Inscription
+            const loginLink = accountMenu.querySelector('a[href="/login"]');
+            const registerLink = accountMenu.querySelector('a[href="/register"]');
+            if (loginLink) {
+                loginLink.style.display = 'none';
+            }
+            if (registerLink) {
+                registerLink.style.display = 'none';
+            }
+        }
+    });
+    </script>    
+</body>
+</html>

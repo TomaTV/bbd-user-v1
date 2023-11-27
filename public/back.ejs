@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/public/img/ico.ico" type="image/x-icon">
+    <% if (requireAuthentication) { %>
+        <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, proxy-revalidate">
+    <% } %>
+    <title>Back-office</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <header>
+        <div class="top-right-content">
+            <div id="account-info" class="account-info">
+                <!-- Contenu dynamique pour le compte -->
+                <span id="account-text">Compte</span>
+                <span id="dropdown-icon">&#9650;</span>
+                <ul id="account-menu" style="display: none;"></ul>
+            </div>
+        </div>
+    </header>
+
+    <section class="admin-content">
+        <h2>Interface d'Administration</h2>
+        <p>Bienvenue dans le back-office. Vous pouvez commencer à gérer votre site ici.</p>
+
+        <!-- Formulaire de création -->
+        <form id="projectForm" action="/submitProject" method="post">
+            <label for="title">Titre :</label>
+            <input type="text" id="title" name="title" required>
+    
+            <label for="description">Description :</label>
+            <textarea id="description" name="description" required></textarea>
+    
+            <label for="image">Image URL :</label>
+            <input type="text" id="image" name="image" required>
+    
+            <button type="submit">Ajouter</button>
+        </form>
+
+        <!-- Formulaire de modification -->
+    <form id="editForm" action="/editProject" method="post">
+        <h3>Modifier Projet</h3>
+        <label for="editTitle">Sélectionnez un projet :</label>
+        <select id="editTitle" name="editTitle" required>
+            <% projects.forEach(project => { %>
+                <option value="<%= project.title %>"><%= project.title %></option>
+            <% }); %>
+        </select>
+
+        <label for="newTitle">Nouveau titre :</label>
+        <input type="text" id="newTitle" name="newTitle" required>
+
+        <label for="newDescription">Nouvelle description :</label>
+        <textarea id="newDescription" name="newDescription" required></textarea>
+
+        <label for="newImage">Nouvelle image URL :</label>
+        <input type="text" id="newImage" name="newImage" required>
+
+        <button type="submit">Modifier</button>
+    </form>
+
+    <!-- Menu déroulant pour supprimer un projet -->
+    <form id="deleteForm" action="/deleteProject" method="post">
+        <h3>Supprimer Projet</h3>
+        <label for="deleteTitle">Sélectionnez un projet :</label>
+        <select id="deleteTitle" name="deleteTitle" required>
+            <% projects.forEach(project => { %>
+                <option value="<%= project.title %>"><%= project.title %></option>
+            <% }); %>
+        </select>
+        <button type="submit">Supprimer</button>
+    </form>
+    </section>
+
+    <script type="text/javascript" src="/public/js/password.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const accountInfo = document.getElementById('account-info');
+        const accountMenu = document.getElementById('account-menu');
+        const isAuthenticated = true;
+
+        if (isAuthenticated) {
+            // Utilisateur connecté
+            // Affiche le menu déroulant
+            accountMenu.style.display = 'none';
+
+            // Ajoutez le contenu du menu déroulant pour un utilisateur connecté
+            const menuItems = [
+                { label: 'Accueil', link: '/back' },
+                { label: 'Paramètres', link: '/settings' },
+                { label: 'Déconnexion', link: '/logout' }
+            ];
+
+            menuItems.forEach(item => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = item.link; // Utilisez le lien spécifié dans l'objet menuItems
+                a.textContent = item.label;
+                li.appendChild(a);
+                accountMenu.appendChild(li);
+            });
+
+            // Cache les éléments Connexion et Inscription
+            const loginLink = accountMenu.querySelector('a[href="/login"]');
+            const registerLink = accountMenu.querySelector('a[href="/register"]');
+            if (loginLink) {
+                loginLink.style.display = 'none';
+            }
+            if (registerLink) {
+                registerLink.style.display = 'none';
+            }
+        }
+    });
+    </script>    
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/public/img/ico.ico" type="image/x-icon">
+    <title>Accueil - TDev</title>
+    <link rel="stylesheet" type="text/css" href="login.css">
+</head>
+<body>
+    <header>
+        <div class="top-right-content">
+            <div id="account-info" class="account-info">
+                <!-- Contenu dynamique pour le compte -->
+                <span id="account-text">Compte</span>
+                <span id="dropdown-icon">&#9650;</span>
+                <ul id="account-menu" style="display: none;">
+                    <!-- Contenu du menu déroulant pour un utilisateur non connecté -->
+                    <li><a href="/home">Accueil</a></li>
+                    <li><a href="/register">Inscription</a></li>
+                    <li><a href="/login">Connexion</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <section class="home">
+        <h1>Bienvenue sur Mon Site Web</h1>
+        <p>Ceci est la page d'accueil de mon site. Explorez nos projets, parcourez le portfolio, et n'hésitez pas à nous contacter.</p>
+
+        <div class="projects-container">
+            <% projects.forEach(project => { %>
+                <div class="project">
+                    <h2><%= project.title %></h2>
+                    <p><%= project.description %></p>
+                    <!-- Ajoutez une balise <a> autour de l'image liée à la page du projet -->
+                    <a href="/projet/<%= project.title %>">
+                        <img src="<%= project.image %>" alt="<%= project.title %>">
+                    </a>
+                </div>
+            <% }); %>
+        </div>
+    </section>
+
+    <script type="text/javascript" src="/public/js/password.js"></script>
+</body>
+</html>

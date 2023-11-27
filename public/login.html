@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/public/img/ico.ico" type="image/x-icon">
+    <title>Page de Connexion - TDev</title>
+    <link rel="stylesheet" type="text/css" href="login.css">
+</head>
+<body>
+    <header>
+        <div class="top-right-content">
+            <div id="account-info" class="account-info">
+                <!-- Contenu dynamique pour le compte -->
+                <span id="account-text">Compte</span>
+                <span id="dropdown-icon">&#9650;</span>
+                <ul id="account-menu" style="display: none;">
+                    <!-- Contenu du menu déroulant pour un utilisateur non connecté -->
+                    <li><a href="/home">Accueil</a></li>
+                    <li><a href="/register">Inscription</a></li>
+                    <li><a href="/login">Connexion</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <section class="content">
+        <div id="login-form">
+            <h2>Connexion</h2>
+              <form action="/login" method="post" onsubmit="logFormValues()">
+                <p id="error-message" class="error-message"></p>
+                <label for="username">Nom d'utilisateur :</label>
+                <input type="text" id="username" name="username" required>
+                
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit">Se connecter</button>
+            </form>
+        </div>
+    </section>
+    <script type="text/javascript" src="/public/js/password.js"></script>
+</body>
+</html>
