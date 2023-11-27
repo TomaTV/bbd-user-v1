@@ -56,4 +56,3 @@ Avant de commencer, assurez-vous d'avoir installé les éléments suivants sur v
 
 ## Auteurs
 [TOMA](https://github.com/TomaTV)
-[MIT](https://choosealicense.com/licenses/mit/)
